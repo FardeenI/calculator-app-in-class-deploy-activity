@@ -39,7 +39,7 @@ export default function App() {
   async function handleEqual() {
     if (!expr) return
     try {
-      const res = await fetch('http://localhost:3001/calculate', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ expression: expr }) })
+      const res = await fetch('https://gt6uylh8q5.execute-api.us-east-1.amazonaws.com/test/CalculatorManager', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ expression: expr }) })
       const j = await res.json()
       if (res.ok) { setResult(j.result); setExpr(j.result) }
       else setResult('Error: ' + (j.error || 'calc'))

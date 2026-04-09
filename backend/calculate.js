@@ -84,7 +84,7 @@ function evalRPN(rpn) {
   return st[0];
 }
 
-function calculate(expression) {
+export function calculate(expression) {
   if (typeof expression !== 'string') throw new Error('Expression must be a string');
   const cleaned = expression.replace(/×/g, '*').replace(/÷/g, '/').replace(/\u2212/g, '-');
   const tokens = tokenize(cleaned);
@@ -93,5 +93,3 @@ function calculate(expression) {
   const rounded = Math.abs(val) < 1e-12 ? 0 : Number.parseFloat(val.toPrecision(12));
   return String(rounded);
 }
-
-module.exports = { calculate };
